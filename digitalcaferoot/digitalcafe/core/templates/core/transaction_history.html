@@ -1,0 +1,23 @@
+{% if transactions %}
+    <h2>Transaction History</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Transaction ID</th>
+                <th>Date</th>
+                <th>Total Items</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for transaction in transactions %}
+                <tr>
+                    <td>{{ transaction.id }}</td>
+                    <td>{{ transaction.created_at }}</td>
+                    <td>{{ transaction.lineitem_set.count }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>You have no previous transactions.</p>
+{% endif %}
